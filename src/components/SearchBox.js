@@ -3,12 +3,12 @@ import React from 'react';
 export default function SearchBox(props) {
   console.log('SearchBox props: ', props);
   return (
-    <form action="">
-      <div className="form-group row">
+    <form>
+      <div className="row form-group d-flex justify-content-between">
         <label htmlFor="searchMovie" className="col-sm-2 col-form-label">
           Search:
         </label>
-        <div className="col-sm-4">
+        <div className="col col-sm-10">
           <input
             type="text"
             className="form-control"
