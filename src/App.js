@@ -5,6 +5,7 @@ import MovieList from './components/MovieList';
 import MovieListHeading from './components/MovieListHeading';
 import SearchBox from './components/SearchBox';
 import AddFavourites from './components/AddFavourites';
+import Test from './components/Test';
 
 export default function App() {
   const [movies, setMovies] = useState([]);
@@ -32,18 +33,28 @@ export default function App() {
   }, [searchValue]);
 
   return (
-    <div className="container-fluid movie-app">
-      <div className="row d-flex align-items-center my-4">
+    <>
+      <div className="d-flex align-items-center mx-4 my-3">
         <MovieListHeading heading="Movies" />
         <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
-      <div className="row">
+      <div className="container-fluid d-flex movie-app">
         <MovieList
           movies={movies}
           handleAddFavouritesClick={addFavouriteMovie}
           favouriteComponent={AddFavourites}
         />
       </div>
-    </div>
+      <div className="d-flex align-items-center mx-4 my-3">
+        <MovieListHeading heading="Favourites" />
+      </div>
+      <div className="container-fluid d-flex movie-app">
+        <MovieList
+          movies={favourites}
+          handleAddFavouritesClick={addFavouriteMovie}
+          favouriteComponent={AddFavourites}
+        />
+      </div>
+    </>
   );
 }
