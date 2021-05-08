@@ -10,7 +10,7 @@ export default function MovieList(props) {
           <img src={movie.Poster} alt="movie"></img>
           <div
             className="overlay d-flex align-items-center justify-content-center"
-            onClick={() => props.handleAddFavouritesClick(movie)}
+            onClick={() => props.handleFavouritesClick(movie)}
           >
             <FavouriteComponent />
           </div>
