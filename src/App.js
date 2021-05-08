@@ -5,7 +5,7 @@ import MovieList from './components/MovieList';
 import MovieListHeading from './components/MovieListHeading';
 import SearchBox from './components/SearchBox';
 import AddFavourites from './components/AddFavourites';
-import Test from './components/Test';
+import RemoveFavourites from './components/RemoveFavourites';
 
 export default function App() {
   const [movies, setMovies] = useState([]);
@@ -28,6 +28,13 @@ export default function App() {
     setFavourites(newFavouriteMovies);
   };
 
+  const removeFavouriteMovie = (movie) => {
+    const newFavouriteMovies = favourites.filter(
+      (favourite) => favourite != movie
+    );
+    setFavourites(newFavouriteMovies);
+  };
+
   useEffect(() => {
     getMovies(searchValue);
   }, [searchValue]);
@@ -41,7 +48,7 @@ export default function App() {
       <div className="container-fluid d-flex movie-app">
         <MovieList
           movies={movies}
-          handleAddFavouritesClick={addFavouriteMovie}
+          handleFavouritesClick={addFavouriteMovie}
           favouriteComponent={AddFavourites}
         />
       </div>
@@ -51,8 +58,8 @@ export default function App() {
       <div className="container-fluid d-flex movie-app">
         <MovieList
           movies={favourites}
-          handleAddFavouritesClick={addFavouriteMovie}
-          favouriteComponent={AddFavourites}
+          handleFavouritesClick={removeFavouriteMovie}
+          favouriteComponent={RemoveFavourites}
         />
       </div>
     </>
