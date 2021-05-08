@@ -26,6 +26,7 @@ export default function App() {
   const addFavouriteMovie = (movie) => {
     const newFavouriteMovies = [...favourites, movie];
     setFavourites(newFavouriteMovies);
+    saveToLocalStorage(newFavouriteMovies);
   };
 
   const removeFavouriteMovie = (movie) => {
@@ -33,11 +34,23 @@ export default function App() {
       (favourite) => favourite != movie
     );
     setFavourites(newFavouriteMovies);
+    saveToLocalStorage(newFavouriteMovies);
+  };
+
+  const saveToLocalStorage = (items) => {
+    localStorage.setItem('movie-app-favourites', JSON.stringify(items));
   };
 
   useEffect(() => {
     getMovies(searchValue);
   }, [searchValue]);
+
+  useEffect(() => {
+    const movieFavourites = JSON.parse(
+      localStorage.getItem('movie-app-favourites')
+    );
+    setFavourites(movieFavourites);
+  }, []);
 
   return (
     <>
